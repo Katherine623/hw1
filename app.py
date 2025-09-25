@@ -66,7 +66,7 @@ with st.sidebar:
     a_true = st.slider("真實斜率 a", min_value=-10.0, max_value=10.0, value=2.0, step=0.1)
     b_true = st.slider("真實截距 b", min_value=-20.0, max_value=20.0, value=1.0, step=0.5)
     noise_std = st.slider("高斯噪聲標準差 σ", min_value=0.0, max_value=10.0, value=1.0, step=0.1)
-    n_points = st.slider("資料點數 n", min_value=10, max_value=2000, value=200, step=10)
+    n_points = st.slider("資料點數 n", min_value=10, max_value=2000, value=100, step=10)
     seed = st.number_input("隨機種子", value=42, step=1)
     x_min, x_max = st.slider("x 範圍", 0.0, 100.0, (0.0, 10.0), step=0.5)
     st.caption("提示：調整 a、噪聲與 n 可以觀察擬合穩定度與 R² 變化。")
@@ -91,7 +91,7 @@ with st.expander("1) Business Understanding（業務/問題理解）✅", expand
 with st.expander("2) Data Understanding（資料理解）✅", expanded=True):
     st.markdown("先用你設定的參數**生成合成資料**，檢視散佈與統計描述。")
     df = generate_linear_data(a=a_true, b=b_true, noise_std=noise_std, n=n_points, seed=int(seed), x_min=x_min, x_max=x_max)
-    st.dataframe(df.head(10), width='stretch')
+    st.dataframe(df.head(10))
     st.write("資料描述：")
     st.write(df.describe())
 
