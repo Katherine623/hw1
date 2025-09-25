@@ -91,7 +91,7 @@ with st.expander("1) Business Understanding（業務/問題理解）✅", expand
 with st.expander("2) Data Understanding（資料理解）✅", expanded=True):
     st.markdown("先用你設定的參數**生成合成資料**，檢視散佈與統計描述。")
     df = generate_linear_data(a=a_true, b=b_true, noise_std=noise_std, n=n_points, seed=int(seed), x_min=x_min, x_max=x_max)
-    st.dataframe(df.head(10), use_container_width=True)
+    st.dataframe(df.head(10), width='stretch')
     st.write("資料描述：")
     st.write(df.describe())
 
